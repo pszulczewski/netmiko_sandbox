@@ -8,6 +8,7 @@ authors = ["Patryk <patryk@szulczewski.eu>"]
 python = "^3.6"
 netmiko = "*"
 textfsm = "*"
+PyYAML = "*"
 
 [tool.poetry.dev-dependencies]
 
