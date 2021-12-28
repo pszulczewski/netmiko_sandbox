@@ -8,6 +8,7 @@ authors = ["Patryk <patryk@szulczewski.eu>"]
 python = "^3.8"
 netmiko = "^3.4.0"
 textfsm = "^1.1.2"
+pyaml = "^21.10.1"
 
 [tool.poetry.dev-dependencies]
 
