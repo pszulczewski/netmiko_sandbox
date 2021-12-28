@@ -1,14 +1,13 @@
 [tool.poetry]
-name = "netmiko_mock"
+name = "netmiko_sandbox"
 version = "0.1.0"
 description = ""
 authors = ["Patryk <patryk@szulczewski.eu>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-netmiko = "^3.4.0"
-textfsm = "^1.1.2"
-pyaml = "^21.10.1"
+python = "^3.6"
+netmiko = "*"
+textfsm = "*"
 
 [tool.poetry.dev-dependencies]
 
