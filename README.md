@@ -6,9 +6,9 @@ to work with different vendor device types in a netmiko-like style, to retrieve 
 without the requirement of running physical or virtual devices.
 
 ## How does it work?
-`NetmikoMock` overwrites all major netmiko methods used to make connection to a device and retrieve a command output. 
-It's coupled with `ntc-templates` repository (sub-repository) which has many `textFSM` templates and mock data for tests 
-containing many raw & structured command outputs from multiple devices of different vendors.
+`NetmikoMock` overwrites netmiko methods used to make connection to a device to retrieve command outputs. 
+It's coupled with `ntc-templates` repository (sub-repository) which has many `textFSM` templates and mocked data for 
+tests containing many raw & structured command outputs from multiple devices of different vendors.
 This fake device leverages these mock files to return command output like netmiko does, but this time without the need
 of running real or virtual devices.
 
@@ -16,13 +16,14 @@ of running real or virtual devices.
 It reads textFSM CliTable index file available in ntc-templates directory, so it's able to "auto-complete" commands.
 
 ## Caveats
-When a directory with mock files for a specific textFSM template is detected the first .raw or .yml file is returned. 
+When a directory with mocked files for a specific textFSM template is detected the first .raw or .yml file is returned, 
+depending on requested type (raw or structured).
 When many mock files are present under mock files, always the first one is returned.
 
 Supported commands are limited to those having textFSM template and mock files in `ntc-templates` repository.
 
 ## Use Cases
-* Easy access command outputs for many devices of different vendor types.
+* Easy access to command outputs from many devices of different vendor types.
 * Facilitate local development of netmiko scripts when device(s) are not available.
 * Facilitate collecting raw or structured command outputs when developing network tests and mocking netmiko responses.
 
@@ -40,10 +41,10 @@ git clone https://github.com/networktocode/ntc-templates.git
 `poetry shell` and you're good to go!
 
 ## Developing netmiko scripts with NetmikoMock
-Connecting do devices over and over when developing a script can be slow, you can greatly speed it up by using Mock in 
+Connecting do devices over and over when developing scripts can be slow, you can greatly speed it up by using Mock in 
 similar way as using mocks for tests.
 
-Let's consider the following scenarios:
+Let's consider two potential scenarios:
 1. import `NetmikoMock` as `ConnectHandler` the same way as you usually import `ConnectHandler` from netmiko and then 
 work on your development locally. You can switch back to netmiko just by removing that extra import statement whenever 
 you're ready to use your script on real devices.
@@ -52,7 +53,7 @@ you're ready to use your script on real devices.
 See `main.py` for some examples. Keep in mind that commands are limited to what's available in `ntc-templates` 
 repository.
 
-## Using CLI tool to collect command outputs when writing network tests.
+## Using CLI tool to collect command outputs when mocking device responses.
 
 ```
 $ ./cli.py -h
